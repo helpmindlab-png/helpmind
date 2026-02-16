@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Mind Spark — 감성 심리테스트</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg">
+    <div class="blob b1" aria-hidden="true"></div>
+    <div class="blob b2" aria-hidden="true"></div>
+    <div class="blob b3" aria-hidden="true"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand" role="banner">
+      <div class="logo" aria-hidden="true"></div>
+      <div class="brandText">
+        <div class="brandName">Mind Spark</div>
+        <div class="brandTag">가볍게 확인 · 부드럽게 이해</div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <button class="navBtn" id="navHome">홈</button>
+      <button class="navBtn" id="navTrust">신뢰</button>
+    </nav>
+  </header>
+
+  <main class="wrap" id="app" aria-live="polite"></main>
+
+  <footer class="footer">
+    <div class="footerInner">
+      <div class="fine">
+        <b>안내</b> · 개인 응답/개인 점수/개인 이벤트 정보는 서버에 저장하지 않습니다. 결과는 진단이 아니며, 직접적인 인과관계를 단정할 수 없습니다.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chart.js for profile radar (client-side only) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
