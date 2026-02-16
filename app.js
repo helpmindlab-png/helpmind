@@ -15,710 +15,586 @@
     { min: 1.0, max: 1.8, label: "고요 충전형", emoji: "🌿", short: "고요" },
     { min: 1.8, max: 2.6, label: "선택적 교류형", emoji: "☁️", short: "선택" },
     { min: 2.6, max: 3.4, label: "균형 교류형", emoji: "⚖️", short: "균형" },
-    { min: 3.4, max: 4.2, label: "에너지 확산형", emoji: "🔥", short: "확산" },
-    { min: 4.2, max: 5.0, label: "강한 교류형", emoji: "⚡", short: "강함" },
+    { min: 3.4, max: 4.2, label: "활력 확장형", emoji: "✨", short: "활력" },
+    { min: 4.2, max: 5.0, label: "강한 파동형", emoji: "🔥", short: "파동" },
   ];
 
-  // Tests (8 questions each) — standard form
   const TESTS = [
     {
       id: "social",
       title: "사회적 에너지",
-      headline: "사람 만나면 충전돼요, 방전돼요?",
-      desc: "지금의 사회적 에너지 흐름을 가볍게 확인해요.",
-      badge: "SE",
-      metricKey: "socialEnergy",
-      questions: [
-        { t: "사람들과 함께 있는 시간이 오히려 에너지를 준다.", rev: false },
-        { t: "모임 후에는 혼자만의 시간이 꼭 필요하다.", rev: true },
-        { t: "낯선 사람과 대화하는 것이 크게 부담되지 않는다.", rev: false },
-        { t: "사람 많은 자리는 되도록 피하고 싶다.", rev: true },
-        { t: "즉흥적인 약속도 비교적 즐기는 편이다.", rev: false },
-        { t: "여러 사람과 동시에 어울리면 금방 지친다.", rev: true },
-        { t: "대화를 주도하는 편이다.", rev: false },
-        { t: "조용한 환경이 더 편하다.", rev: true },
+      subtitle: "사람과 함께 있을 때의 흐름",
+      tag: "대인 에너지",
+      introLines: [
+        "사람 사이에서 에너지가 어떻게 흐르는지 살펴봐요.",
+        "좋고 나쁨이 아니라, ‘당신에게 편한 방향’을 찾는 과정이에요.",
       ],
-      shortExplain: {
-        short: "교류가 에너지가 되는지, 혹은 휴식이 더 필요한지의 흐름을 봅니다.",
-        long: [
-          "이 결과는 ‘우열’이 아니라 에너지 방향의 차이를 보여줘요.",
-          "조용한 회복이 잘 맞는 사람도, 교류 속에서 충전되는 사람도 모두 자연스러운 패턴입니다.",
-          "공용 기기에서는 시크릿 모드 사용을 권장합니다.",
-        ].join("\n"),
+      // 8 items, include reverse-coded (rev: true)
+      items: [
+        { t: "낯선 자리에서도 비교적 빨리 편해진다." },
+        { t: "여럿이 모인 자리에서 에너지가 차오르는 편이다." },
+        { t: "혼자 있는 시간이 길어지면 오히려 답답해진다." },
+        { t: "사람을 만나고 나면 종종 기운이 빠진다.", rev: true },
+        { t: "대화가 길어져도 집중이 유지되는 편이다." },
+        { t: "약속이 잦아지면 피로가 빠르게 쌓인다.", rev: true },
+        { t: "친한 사람과 함께 있을 때 편안함이 커진다." },
+        { t: "사람 많은 환경은 오래 머물기 어렵다.", rev: true },
+      ],
+      result: {
+        short2: [
+          "사회적 에너지의 흐름이 어떤 방향인지 보여줘요.",
+          "상황에 따라 ‘회복 방식’이 달라질 수 있어요.",
+        ],
+        moreTitle: "자세히 보기",
+        moreBody: [
+          "점수가 높다고 ‘사교적’이라 단정할 수는 없어요. 다만, 사람과의 접촉에서 에너지가 덜 소모되거나 오히려 채워지는 경향을 의미할 수 있어요.",
+          "점수가 낮다면 혼자 있는 시간이 회복에 더 도움이 될 수 있어요. 이는 ‘대인관계 능력’과는 별개의 흐름이에요.",
+          "당신에게 편한 리듬을 찾는 것이 핵심이에요.",
+        ],
       },
     },
     {
       id: "recovery",
       title: "감정 회복 속도",
-      headline: "감정이 얼마나 빨리 정리되는 편인가요?",
-      desc: "속상함·갈등 이후, 마음이 원래 흐름으로 돌아오는 속도를 확인해요.",
-      badge: "ER",
-      metricKey: "recoverySpeed",
-      questions: [
-        { t: "속상한 일이 있어도 비교적 빨리 기분이 정리된다.", rev: false },
-        { t: "기분이 상하면 하루 이상 계속 영향을 받는다.", rev: true },
-        { t: "실망스러운 일이 있어도 금방 다른 일에 집중할 수 있다.", rev: false },
-        { t: "작은 갈등도 오래 마음에 남는 편이다.", rev: true },
-        { t: "감정이 흔들려도 스스로 균형을 되찾는 편이다.", rev: false },
-        { t: "한 번 상처받으면 쉽게 잊히지 않는다.", rev: true },
-        { t: "스트레스 상황에서도 비교적 빠르게 평정을 찾는다.", rev: false },
-        { t: "기분이 가라앉으면 오래 지속되는 편이다.", rev: true },
+      subtitle: "감정이 지나간 뒤 돌아오는 속도",
+      tag: "회복 리듬",
+      introLines: [
+        "감정이 흔들린 뒤, 다시 중심으로 돌아오는 흐름을 봐요.",
+        "진단이 아니라 ‘회복 방향’을 가늠하는 참고예요.",
       ],
-      shortExplain: {
-        short: "회복 속도는 ‘강함’이 아니라 정리되는 리듬의 차이일 뿐이에요.",
-        long: [
-          "여운이 오래 남는 편이라면, 그만큼 경험을 섬세하게 받아들이는 경향이 있을 수 있어요.",
-          "회복이 빠른 편이라면, 상황을 재정리하는 속도가 장점이 될 수 있습니다.",
-          "어느 쪽이든 ‘더 좋다/나쁘다’가 아닙니다.",
-        ].join("\n"),
+      items: [
+        { t: "기분이 흔들려도 비교적 금방 안정된다." },
+        { t: "하루 중 감정 기복이 오래 남는 편이다.", rev: true },
+        { t: "기분 전환을 위해 스스로 할 수 있는 방법이 있다." },
+        { t: "작은 일도 오래 곱씹는 편이다.", rev: true },
+        { t: "스트레스가 와도 금방 일상 루틴을 되찾는다." },
+        { t: "감정이 가라앉기까지 시간이 꽤 걸린다.", rev: true },
+        { t: "잠을 자고 나면 마음이 한결 가벼워지는 편이다." },
+        { t: "마음이 복잡하면 하루 종일 영향을 받는다.", rev: true },
+      ],
+      result: {
+        short2: [
+          "회복 속도는 ‘성격’이 아니라 ‘패턴’일 수 있어요.",
+          "지금의 컨디션도 결과에 영향을 줄 수 있어요.",
+        ],
+        moreTitle: "자세히 보기",
+        moreBody: [
+          "점수가 높다면 흔들림 이후 안정으로 돌아오는 시간이 상대적으로 짧을 수 있어요.",
+          "점수가 낮다면 감정이 머무는 시간이 길 수 있어요. 이는 나쁜 것이 아니라, ‘정리 방식’이 깊은 흐름일 수도 있어요.",
+          "회복을 돕는 루틴(수면·운동·정리·대화)을 찾는 것이 중요해요.",
+        ],
       },
     },
     {
       id: "fatigue",
       title: "인간관계 피로도",
-      headline: "관계 속 감정 소모는 어느 정도인가요?",
-      desc: "관계 밀도에 따라 감정 에너지가 얼마나 소모되는지 확인해요.",
-      badge: "RF",
-      metricKey: "relationshipFatigue",
-      questions: [
-        { t: "사람들과 긴 시간 함께하면 감정적으로 지치는 편이다.", rev: false },
-        { t: "관계 속 갈등이 생겨도 비교적 쉽게 넘기는 편이다.", rev: true },
-        { t: "누군가의 감정을 오래 신경 쓰는 편이다.", rev: false },
-        { t: "관계 문제는 비교적 빨리 잊는 편이다.", rev: true },
-        { t: "대화를 오래 이어가면 피로가 쌓인다.", rev: false },
-        { t: "혼자 있는 시간이 관계 피로를 회복시킨다.", rev: false },
-        { t: "관계 속에서 눈치를 많이 보는 편이다.", rev: false },
-        { t: "감정 소모가 있어도 크게 부담되지 않는다.", rev: true },
+      subtitle: "관계에서 소모되는 정도",
+      tag: "관계 소모",
+      introLines: [
+        "관계가 당신의 에너지를 얼마나 쓰게 하는지 확인해요.",
+        "우열이 아니라 ‘경계선’과 ‘회복 방식’을 찾는 과정이에요.",
       ],
-      shortExplain: {
-        short: "관계 피로는 ‘사회성 부족’이 아니라 에너지 소모 패턴입니다.",
-        long: [
-          "피로가 높게 느껴질수록, 회복 시간과 거리 조절이 중요해질 수 있어요.",
-          "피로가 낮게 느껴진다면, 교류를 비교적 편안하게 유지하는 흐름일 수 있습니다.",
-          "상황(업무/학업/가족 등)에 따라 달라질 수 있어요.",
-        ].join("\n"),
+      items: [
+        { t: "부탁을 거절하는 게 어렵다." },
+        { t: "상대 기분을 먼저 살피느라 지친다." },
+        { t: "관계에서 적당한 거리를 유지하기 쉽다.", rev: true },
+        { t: "연락/메시지에 부담을 느끼는 편이다." },
+        { t: "사람을 만나고 나면 혼자만의 시간이 꼭 필요하다." },
+        { t: "갈등 상황을 피하려고 많이 참는 편이다." },
+        { t: "내 속도를 지키며 관계를 이어갈 수 있다.", rev: true },
+        { t: "관계가 많아질수록 피로가 크게 늘어난다." },
+      ],
+      result: {
+        short2: [
+          "관계 피로는 ‘나쁨’이 아니라 ‘소모 방식’을 보여줘요.",
+          "당신에게 맞는 거리감이 있을 수 있어요.",
+        ],
+        moreTitle: "자세히 보기",
+        moreBody: [
+          "점수가 높다면 관계에서 에너지가 많이 소모될 수 있어요. 특히 경계가 흐려지거나 ‘배려 과부하’가 올 때 피로가 커질 수 있어요.",
+          "점수가 낮다면 관계를 유지하는 데 드는 비용이 상대적으로 낮을 수 있어요. 다만 상황에 따라 달라질 수 있어요.",
+          "피로를 줄이는 핵심은 ‘거리·빈도·회복 시간’을 조절하는 거예요.",
+        ],
       },
     },
   ];
 
-  // ========== App State (memory-only) ==========
+  // ========== State (memory only; no localStorage/sessionStorage) ==========
   const state = {
-    route: "home", // home | test | result | profile | trust
-    currentTestId: null,
-    qIndex: 0,
-    answers: [], // for current test only, memory-only
-    results: {
-      social: null,
-      recovery: null,
-      fatigue: null,
-    },
-    // Example month average snapshot (placeholder — replace with your aggregate)
-    snapshot: {
-      month: "이번 달",
-      socialEnergyAvg: 3.08,
-      recoverySpeedAvg: 3.14,
-      relationshipFatigueAvg: 2.97,
-    },
-    profileChart: null,
+    route: "home",
+    currentTest: null, // TESTS index
+    answers: {}, // { testId: number[] }
+    results: {}, // { testId: {score, bin, ...} }
+    expanded: {}, // expand toggles per testId
   };
 
   // ========== Helpers ==========
-  const $ = (sel) => document.querySelector(sel);
+  const $ = (sel, root = document) => root.querySelector(sel);
 
-  function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
-
-  function reverseLikert(v){ // 1..5
-    return 6 - v;
+  function clamp(v, a, b) {
+    return Math.max(a, Math.min(b, v));
   }
 
-  function computeScore(test, answers){
-    // answers length = 8, values 1..5
-    let sum = 0;
-    for (let i=0; i<answers.length; i++){
-      const q = test.questions[i];
-      const v = q.rev ? reverseLikert(answers[i]) : answers[i];
-      sum += v;
+  function mean(arr) {
+    if (!arr || !arr.length) return 0;
+    return arr.reduce((s, x) => s + x, 0) / arr.length;
+  }
+
+  function binForScore(score) {
+    const s = clamp(score, 1, 5);
+    for (const b of BINS) {
+      if (s >= b.min && s <= b.max) return b;
     }
-    const avg = sum / answers.length;
-    // round to 1 decimal for display
-    return Math.round(avg * 10) / 10;
+    return BINS[BINS.length - 1];
   }
 
-  function binForScore(score){
-    // note: boundaries are inclusive of min, exclusive of max except final
-    for (let i=0; i<BINS.length; i++){
-      const b = BINS[i];
-      const isLast = i === BINS.length - 1;
-      if ((score >= b.min && score < b.max) || (isLast && score >= b.min && score <= b.max)){
-        return b;
-      }
-    }
-    return BINS[2];
-  }
-
-  function gentleCompare(score, avg){
-    const d = Math.round((score - avg) * 10) / 10;
-    if (Math.abs(d) < 0.2) return "이번 달 평균과 비슷한 흐름입니다.";
-    if (d > 0) return "이번 달 평균보다 약간 높은 흐름입니다.";
-    return "이번 달 평균보다 다소 조용한 흐름입니다.";
-  }
-
-  function summarizeProfile(s, r, f){
-    // gentle, non-judgmental, 2 lines max
-    const t1 = s >= 3.4 ? "교류에서 비교적 활력을 얻는 편이며" : s <= 2.6 ? "조용한 환경에서 회복이 잘 되는 편이며" : "교류와 휴식의 균형을 잘 맞추는 편이며";
-    const t2 = r >= 3.4 ? "감정이 비교적 빠르게 정리되는 흐름이에요." : r <= 2.6 ? "감정의 여운이 비교적 오래 남을 수 있어요." : "회복 흐름이 비교적 안정적인 편이에요.";
-    const t3 = f >= 3.4 ? "관계 속 감정 소모가 쌓일 때는 휴식이 도움이 될 수 있습니다." : f <= 2.6 ? "관계 속 감정 소모는 비교적 낮은 흐름으로 보입니다." : "관계 소모는 상황에 따라 달라질 수 있어요.";
-    return `${t1} ${t2} ${t3}`;
-  }
-
-  function toast(msg){
-    let el = document.querySelector('.toast');
-    if (!el){
-      el = document.createElement('div');
-      el.className = 'toast';
-      document.body.appendChild(el);
-    }
+  function toast(msg) {
+    const el = document.createElement("div");
+    el.className = "toast";
     el.textContent = msg;
-    el.classList.add('show');
-    setTimeout(()=> el.classList.remove('show'), 1600);
+    document.body.appendChild(el);
+    requestAnimationFrame(() => el.classList.add("show"));
+    setTimeout(() => {
+      el.classList.remove("show");
+      setTimeout(() => el.remove(), 250);
+    }, 2200);
   }
 
-  function hardReset(){
-    // wipe memory state
-    state.route = 'home';
-    state.currentTestId = null;
-    state.qIndex = 0;
-    state.answers = [];
-    state.results.social = null;
-    state.results.recovery = null;
-    state.results.fatigue = null;
-    if (state.profileChart){
-      try{ state.profileChart.destroy(); } catch(e){}
-      state.profileChart = null;
-    }
-    render();
-    // avoid back showing result
-    if (history && history.replaceState){
-      history.replaceState(null, '', location.pathname + location.search);
-    }
-    toast('세션을 종료했어요.');
-  }
-
-  function go(route){
+  // ========== Routing ==========
+  function go(route, payload = {}) {
     state.route = route;
+    state.routePayload = payload;
     render();
-    window.scrollTo({top:0, behavior:'smooth'});
   }
 
-  function startTest(testId){
-    const t = TESTS.find(x=>x.id === testId);
-    if (!t) return;
-    state.currentTestId = testId;
-    state.qIndex = 0;
-    state.answers = [];
-    state.route = 'test';
-    render();
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
-
-  function recordAnswer(v){
-    // v 1..5
-    state.answers[state.qIndex] = v;
-    const t = TESTS.find(x=>x.id === state.currentTestId);
-    // auto-next after short delay
-    setTimeout(()=>{
-      state.qIndex += 1;
-      if (state.qIndex >= t.questions.length){
-        finishTest();
-      } else {
-        render();
-        window.scrollTo({top:0, behavior:'smooth'});
-      }
-    }, 220);
-  }
-
-  function finishTest(){
-    const t = TESTS.find(x=>x.id === state.currentTestId);
-    const score = computeScore(t, state.answers);
-    const bin = binForScore(score);
-
-    const result = {
-      testId: t.id,
-      title: t.title,
-      badge: t.badge,
-      score,
-      binLabel: bin.label,
-      binEmoji: bin.emoji,
-      compareLine: null, // set below
-      short: t.shortExplain.short,
-      long: t.shortExplain.long,
-    };
-
-    // compare against snapshot mean of the same metric
-    let avg = 3.0;
-    if (t.metricKey === 'socialEnergy') avg = state.snapshot.socialEnergyAvg;
-    if (t.metricKey === 'recoverySpeed') avg = state.snapshot.recoverySpeedAvg;
-    if (t.metricKey === 'relationshipFatigue') avg = state.snapshot.relationshipFatigueAvg;
-    result.compareLine = gentleCompare(score, avg);
-
-    if (t.id === 'social') state.results.social = result;
-    if (t.id === 'recovery') state.results.recovery = result;
-    if (t.id === 'fatigue') state.results.fatigue = result;
-
-    // wipe per-test answers immediately (minimize local residue)
-    state.answers = [];
-    state.qIndex = 0;
-
-    state.route = 'result';
-    render();
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
-
-  function nextSuggestion(){
-    // social -> recovery -> fatigue -> profile
-    if (state.currentTestId === 'social') return 'recovery';
-    if (state.currentTestId === 'recovery') return 'fatigue';
-    return null;
-  }
-
-  function canShowProfile(){
-    return !!(state.results.social && state.results.recovery && state.results.fatigue);
-  }
-
-  // ========== Rendering ==========
-  function render(){
-    const app = $('#app');
+  // ========== Render ==========
+  function render() {
+    const app = $("#app");
     if (!app) return;
 
-    if (state.route === 'home'){
+    if (state.route === "home") {
       app.innerHTML = homeView();
-      bindHome();
+      wireHome();
       return;
     }
-    if (state.route === 'test'){
-      app.innerHTML = testView();
-      bindTest();
-      return;
-    }
-    if (state.route === 'result'){
-      app.innerHTML = resultView();
-      bindResult();
-      return;
-    }
-    if (state.route === 'profile'){
-      app.innerHTML = profileView();
-      bindProfile();
-      return;
-    }
-    if (state.route === 'trust'){
+    if (state.route === "trust") {
       app.innerHTML = trustView();
-      bindTrust();
+      wireTrust();
       return;
     }
-
+    if (state.route === "test") {
+      app.innerHTML = testView(state.routePayload.testId);
+      wireTest(state.routePayload.testId);
+      return;
+    }
+    if (state.route === "result") {
+      app.innerHTML = resultView(state.routePayload.testId);
+      wireResult(state.routePayload.testId);
+      return;
+    }
+    if (state.route === "profile") {
+      app.innerHTML = profileView();
+      wireProfile();
+      return;
+    }
     // fallback
-    state.route = 'home';
-    app.innerHTML = homeView();
-    bindHome();
+    go("home");
   }
 
-  function homeView(){
+  function homeView() {
     return `
-      <section class="card">
-        <div class="hero">
-          <div class="kickers">
-            <span class="chip">⏱ 3분</span>
-            <span class="chip">📱 모바일 최적</span>
-            <span class="chip">🔒 저장 안 함</span>
+      <section class="hero">
+        <div class="heroCard">
+          <div class="heroTop">
+            <div class="pill">감성형 심리테스트</div>
+            <h1 class="heroTitle">Mind Spark</h1>
+            <p class="heroSub">가볍게 확인 · 부드럽게 이해</p>
           </div>
 
-          <h1 class="h1">가볍게 해보고,<br/>내 흐름을 부드럽게 알아보기</h1>
-          <p class="sub">결과는 <b>점수 + 5단계 캐릭터</b>로 보여드려요. 개인 응답/점수는 서버에 저장하지 않습니다.</p>
-
-          <div class="btnRow">
-            <button class="btn btnPrimary" id="startSocial">사회적 에너지 시작</button>
-            <button class="btn btnGhost" id="goTrust">왜 믿어도 돼요?</button>
+          <div class="grid3">
+            ${TESTS.map(
+              (t) => `
+              <div class="testCard">
+                <div class="testMeta">
+                  <div class="testTitle">${escapeHtml(t.title)}</div>
+                  <div class="testSub">${escapeHtml(t.subtitle)}</div>
+                </div>
+                <button class="primaryBtn" data-start="${t.id}">시작하기</button>
+              </div>
+            `
+            ).join("")}
           </div>
 
-          <div class="grid" style="margin-top:14px;">
-            <div class="tile" role="button" tabindex="0" id="tileSocial">
-              <div>
-                <p class="tileName">사회적 에너지</p>
-                <div class="tileMeta">3분 · 비교형 결과</div>
-              </div>
-              <div class="tileMeta">${state.snapshot.month} 평균 ${state.snapshot.socialEnergyAvg.toFixed(2)}</div>
-            </div>
-            <div class="tile" role="button" tabindex="0" id="tileRecovery">
-              <div>
-                <p class="tileName">감정 회복 속도</p>
-                <div class="tileMeta">3분 · 흐름 확인</div>
-              </div>
-              <div class="tileMeta">${state.snapshot.month} 평균 ${state.snapshot.recoverySpeedAvg.toFixed(2)}</div>
-            </div>
-            <div class="tile" role="button" tabindex="0" id="tileFatigue">
-              <div>
-                <p class="tileName">인간관계 피로도</p>
-                <div class="tileMeta">3분 · 에너지 소모</div>
-              </div>
-              <div class="tileMeta">${state.snapshot.month} 평균 ${state.snapshot.relationshipFatigueAvg.toFixed(2)}</div>
-            </div>
-            <div class="tile tileSoon" aria-disabled="true">
-              <div>
-                <p class="tileName">에너지 프로파일</p>
-                <div class="tileMeta">3개 완료 시 제공</div>
-              </div>
-              <div class="tileMeta">그래픽 요약 · 이미지 저장</div>
-            </div>
+          <div class="note">
+            <b>안내</b> · 개인 응답/개인 점수는 저장하지 않아요. 결과는 진단이 아니며, 인과관계를 단정할 수 없습니다.
           </div>
 
-          <div class="cardInner" style="padding-top:0;">
-            <div class="fine">
-              <b>짧게 안내</b> · 익명 집계 데이터 · 로컬 프라이버시(LDP) 기반 추정 · 직접적인 인과관계를 단정할 수 없다
-            </div>
+          <div class="ctaRow">
+            <button class="ghostBtn" id="goTrust">신뢰/원칙 보기</button>
           </div>
         </div>
       </section>
     `;
   }
 
-  function testView(){
-    const t = TESTS.find(x=>x.id === state.currentTestId);
-    const total = t.questions.length;
-    const idx = state.qIndex;
-    const pct = clamp(Math.round((idx / total) * 100), 0, 100);
-    const q = t.questions[idx];
-
+  function trustView() {
     return `
-      <section class="card">
-        <div class="cardInner">
-          <div class="progressRow">
-            <div class="progressText">Q ${idx+1} / ${total}</div>
-            <div class="progressBar" aria-hidden="true">
-              <div class="progressFill" style="width:${pct}%;"></div>
-            </div>
+      <section class="panel">
+        <div class="panelCard">
+          <div class="panelHead">
+            <div class="pill">원칙</div>
+            <h2 class="panelTitle">개인 데이터는 남기지 않습니다</h2>
+            <p class="panelSub">이 사이트는 월간 집계(익명) 목적의 구조를 따릅니다.</p>
           </div>
 
-          <div class="qTitle">${escapeHtml(q.t)}</div>
-
-          <div class="choices" role="group" aria-label="Answer choices">
-            ${SCALE_LABELS.map((lab, i)=>
-              `<button class="choice" data-v="${i+1}">${lab}</button>`
-            ).join('')}
+          <div class="bullet">
+            <div class="bItem">✅ 개인 원응답 저장 금지</div>
+            <div class="bItem">✅ 개인 점수 저장 금지</div>
+            <div class="bItem">✅ URL에 점수 포함 금지</div>
+            <div class="bItem">✅ localStorage/sessionStorage/IndexedDB 저장 금지</div>
+            <div class="bItem">✅ 서버 저장은 <b>month × metric × bin × count</b>만</div>
+            <div class="bItem">✅ GA4에 심리 데이터 전송 금지</div>
+            <div class="bItem">✅ 결과는 진단이 아니며 인과관계 단정 금지</div>
+            <div class="bItem">✅ 공유는 이미지 저장(PNG) 방식</div>
           </div>
 
-          <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
-            <button class="btnText" id="backBtn">← 이전</button>
-            <button class="btnText" id="quitBtn">종료</button>
-          </div>
-
-          <div class="fine" style="margin-top:10px;">
-            개인 응답/점수는 서버에 저장하지 않습니다. (공용 기기에서는 시크릿 모드 권장)
+          <div class="ctaRow">
+            <button class="primaryBtn" id="backHome">홈으로</button>
           </div>
         </div>
       </section>
     `;
   }
 
-  function resultView(){
-    const t = TESTS.find(x=>x.id === state.currentTestId);
-    const r = (t.id === 'social') ? state.results.social : (t.id === 'recovery') ? state.results.recovery : state.results.fatigue;
+  function testView(testId) {
+    const t = TESTS.find((x) => x.id === testId);
+    if (!t) return `<div class="panelCard">테스트를 찾을 수 없어요.</div>`;
 
-    const next = nextSuggestion();
-    const nextTest = next ? TESTS.find(x=>x.id === next) : null;
-
-    const profileReady = canShowProfile();
-
+    const answers = state.answers[testId] || Array(t.items.length).fill(0);
     return `
-      <section class="card">
-        <div class="cardInner">
-          <div class="resultTop">
-            <div>
-              <h2 class="resultName">${r.binEmoji} ${escapeHtml(r.binLabel)}</h2>
-              <div class="resultMeta">Score ${r.score.toFixed(1)} · ${escapeHtml(r.compareLine)}</div>
-            </div>
-            <div class="badge" aria-label="test badge">${escapeHtml(r.badge)}</div>
+      <section class="panel">
+        <div class="panelCard">
+          <div class="panelHead">
+            <div class="pill">${escapeHtml(t.tag)}</div>
+            <h2 class="panelTitle">${escapeHtml(t.title)}</h2>
+            <p class="panelSub">${escapeHtml(t.subtitle)}</p>
           </div>
 
-          <p class="resultMini">${escapeHtml(r.short)}</p>
-
-          <div class="accordion">
-            <button class="btn btnGhost accBtn" id="moreBtn">🔎 자세히 보기</button>
-            <div class="accBody" id="moreBody">
-              ${escapeHtml(r.long).replaceAll('\n','<br/>')}
-              <div style="margin-top:10px;" class="fine">
-                익명 집계 데이터 기반 비교 · 로컬 프라이버시(LDP) 기반 추정 · 직접적인 인과관계를 단정할 수 없다
-              </div>
-            </div>
+          <div class="introLines">
+            ${t.introLines.map((x) => `<div class="line">${escapeHtml(x)}</div>`).join("")}
           </div>
 
-          ${nextTest ? `
-            <div class="suggest">
-              <div class="suggestTitle">🧩 다음으로 ${escapeHtml(nextTest.title)}도 함께 볼까요?</div>
-              <p class="suggestText">함께 보면 흐름이 더 분명해질 수 있어요. (선택)</p>
-              <div class="btnRow" style="margin-top:10px;">
-                <button class="btn btnPrimary" id="goNext">${escapeHtml(nextTest.title)} 시작</button>
-                <button class="btn btnGhost" id="goHome">홈으로</button>
-              </div>
-            </div>
-          ` : `
-            <div class="suggest">
-              <div class="suggestTitle">✨ 3개 테스트를 모두 완료했어요</div>
-              <p class="suggestText">이제 한 장으로 정리한 <b>에너지 프로파일</b>을 볼 수 있어요.</p>
-              <div class="btnRow" style="margin-top:10px;">
-                <button class="btn btnPrimary" id="toProfile" ${profileReady ? '' : 'disabled'}>프로파일 보기</button>
-                <button class="btn btnGhost" id="goHome">홈으로</button>
-              </div>
-            </div>
-          `}
-
-          <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
-            <button class="btnText" id="endBtn">끝내기(흔적 지우기)</button>
-            <button class="btnText" id="saveCardBtn">이미지로 저장</button>
+          <div class="qList">
+            ${t.items
+              .map((q, i) => {
+                const v = answers[i] || 0;
+                return `
+                  <div class="qItem">
+                    <div class="qText">
+                      <span class="qNo">${i + 1}.</span>
+                      ${escapeHtml(q.t)}
+                      ${q.rev ? `<span class="revTag">역문항</span>` : ""}
+                    </div>
+                    <div class="scale" role="group" aria-label="question ${i + 1}">
+                      ${SCALE_LABELS.map((lab, idx) => {
+                        const score = idx + 1;
+                        const checked = v === score ? "data-on='1'" : "";
+                        return `
+                          <button class="scaleBtn" type="button" data-q="${i}" data-v="${score}" ${checked}>
+                            <span class="dot"></span>
+                            <span class="lab">${escapeHtml(lab)}</span>
+                          </button>
+                        `;
+                      }).join("")}
+                    </div>
+                  </div>
+                `;
+              })
+              .join("")}
           </div>
 
-          <div class="fine" style="margin-top:10px;">
-            * 이미지는 사용자 기기에 저장됩니다. 저장/공유 이후 관리 책임은 사용자에게 있습니다.
+          <div class="ctaRow">
+            <button class="ghostBtn" id="backHome2">홈</button>
+            <button class="primaryBtn" id="submitTest">결과 보기</button>
           </div>
         </div>
       </section>
     `;
   }
 
-  function profileView(){
-    const s = state.results.social?.score;
-    const r = state.results.recovery?.score;
-    const f = state.results.fatigue?.score;
+  function resultView(testId) {
+    const t = TESTS.find((x) => x.id === testId);
+    const r = state.results[testId];
+    if (!t || !r) return `<div class="panelCard">결과를 찾을 수 없어요.</div>`;
 
-    if (typeof s !== 'number' || typeof r !== 'number' || typeof f !== 'number'){
+    const next = nextTestId(testId);
+    const expanded = !!state.expanded[testId];
+
+    return `
+      <section class="panel">
+        <div class="panelCard">
+          <div class="panelHead">
+            <div class="pill">${escapeHtml(t.tag)}</div>
+            <h2 class="panelTitle">${escapeHtml(t.title)} 결과</h2>
+            <p class="panelSub">${escapeHtml(r.bin.emoji)} ${escapeHtml(r.bin.label)} · Score ${r.score.toFixed(
+              1
+            )}</p>
+          </div>
+
+          <div class="resultCard" id="resultCard">
+            <div class="resultTop">
+              <div class="big">${escapeHtml(r.bin.short)}</div>
+              <div class="small">${escapeHtml(r.bin.emoji)} ${escapeHtml(r.bin.label)}</div>
+            </div>
+            <div class="short2">
+              <div>${escapeHtml(t.result.short2[0])}</div>
+              <div>${escapeHtml(t.result.short2[1])}</div>
+            </div>
+
+            <button class="moreBtn" id="toggleMore" type="button" aria-expanded="${expanded}">
+              ${escapeHtml(t.result.moreTitle)} ${expanded ? "▲" : "▼"}
+            </button>
+
+            <div class="moreBody" ${expanded ? "" : "hidden"}>
+              ${t.result.moreBody.map((x) => `<p>${escapeHtml(x)}</p>`).join("")}
+            </div>
+          </div>
+
+          <div class="ctaRow">
+            <button class="ghostBtn" id="saveResultPng">결과 이미지 저장</button>
+            ${next ? `<button class="primaryBtn" id="goNext">다음 테스트 제안 보기</button>` : ""}
+          </div>
+
+          <div class="suggest">
+            ${
+              next
+                ? `
+              <div class="suggestCard">
+                <div class="suggestTitle">다음으로 이어가 볼까요?</div>
+                <div class="suggestSub">${escapeHtml(TESTS.find((x) => x.id === next).title)}로 넘어가면, ‘에너지 패턴’을 더 입체적으로 볼 수 있어요.</div>
+                <div class="ctaRow">
+                  <button class="primaryBtn" id="startNext">다음 테스트 시작</button>
+                </div>
+              </div>
+            `
+                : `
+              <div class="suggestCard">
+                <div class="suggestTitle">3가지 흐름이 모두 준비됐어요</div>
+                <div class="suggestSub">이제 ‘에너지 프로파일’로 한눈에 정리해 볼 수 있어요.</div>
+                <div class="ctaRow">
+                  <button class="primaryBtn" id="goProfile">프로파일 보기</button>
+                </div>
+              </div>
+            `
+            }
+          </div>
+
+          <div class="ctaRow">
+            <button class="ghostBtn" id="backHome3">홈</button>
+            <button class="ghostBtn" id="goTrust2">신뢰</button>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function profileView() {
+    const a = state.results.social;
+    const b = state.results.recovery;
+    const c = state.results.fatigue;
+
+    if (!a || !b || !c) {
       return `
-        <section class="card"><div class="cardInner">
-          <h2 class="resultName">프로파일을 만들 수 없어요</h2>
-          <p class="resultMini">3개 테스트를 모두 완료하면 프로파일이 생성됩니다.</p>
-          <div class="btnRow"><button class="btn btnPrimary" id="backHome">홈으로</button></div>
-        </div></section>
+        <section class="panel">
+          <div class="panelCard">
+            <div class="panelHead">
+              <div class="pill">프로파일</div>
+              <h2 class="panelTitle">아직 3개 결과가 모두 없어요</h2>
+              <p class="panelSub">테스트 3개를 완료하면 프로파일을 볼 수 있어요.</p>
+            </div>
+            <div class="ctaRow">
+              <button class="primaryBtn" id="toHomeFromProfile">홈으로</button>
+            </div>
+          </div>
+        </section>
       `;
     }
 
-    const summary = summarizeProfile(s, r, f);
-
     return `
-      <section class="card">
-        <div class="cardInner profileWrap">
-          <div>
-            <h2 class="resultName">✨ 당신의 에너지 프로파일</h2>
-            <div class="resultMeta">3가지 흐름을 한눈에 정리했어요. (점수는 저장되지 않습니다)</div>
+      <section class="panel">
+        <div class="panelCard profileCard">
+          <div class="panelHead">
+            <div class="pill">프로파일</div>
+            <h2 class="panelTitle">✨ 에너지 프로파일</h2>
+            <p class="panelSub">3가지 흐름을 한눈에 정리해요</p>
           </div>
 
-          <div class="chartWrap">
-            <canvas id="radar" height="320" aria-label="Radar chart"></canvas>
+          <div class="profileGrid">
+            <div class="chartBox">
+              <canvas id="radar" height="320" aria-label="Radar chart"></canvas>
+            </div>
+
+            <div class="barsBox">
+              ${profileBar("사회적 에너지", a.score, "v1")}
+              ${profileBar("감정 회복 속도", b.score, "v2")}
+              ${profileBar("인간관계 피로도", c.score, "v3")}
+            </div>
           </div>
 
-          <div class="metricRow"><div class="metricName">사회적 에너지</div><div class="metricVal">Score ${s.toFixed(1)}</div></div>
-          <div class="metricRow"><div class="metricName">감정 회복 속도</div><div class="metricVal">Score ${r.toFixed(1)}</div></div>
-          <div class="metricRow"><div class="metricName">인간관계 피로도</div><div class="metricVal">Score ${f.toFixed(1)}</div></div>
-
-          <p class="resultMini">${escapeHtml(summary)}</p>
-
-          <div class="btnRow">
-            <button class="btn btnPrimary" id="saveProfile">프로파일 이미지 저장</button>
-            <button class="btn btnGhost" id="backHome">홈으로</button>
+          <div class="profileFooter">
+            <div class="pfNote">
+              <b>안내</b> · 이 화면은 진단이 아닌, 에너지 흐름/패턴에 대한 참고예요. 다음 달에 다시 확인해도 좋아요.
+            </div>
+            <div class="ctaRow">
+              <button class="ghostBtn" id="saveProfilePng">프로파일 이미지 저장(PNG)</button>
+              <button class="primaryBtn" id="saveAllPng">3개 결과+프로파일 한번에 저장</button>
+            </div>
           </div>
 
-          <div class="fine">
-            익명 집계 데이터 기반 비교 · 로컬 프라이버시(LDP) 기반 추정 · 직접적인 인과관계를 단정할 수 없다
-          </div>
-
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
-            <button class="btnText" id="endBtn2">끝내기(흔적 지우기)</button>
-            <button class="btnText" id="saveAll">(선택) 3개 결과 카드 저장</button>
+          <div class="ctaRow">
+            <button class="ghostBtn" id="backHome4">홈</button>
+            <button class="ghostBtn" id="goTrust3">신뢰</button>
           </div>
         </div>
       </section>
     `;
   }
 
-  function trustView(){
+  function profileBar(label, score, cls) {
+    const pct = (clamp(score, 1, 5) / 5) * 100;
     return `
-      <section class="card">
-        <div class="cardInner">
-          <h2 class="resultName">🔒 신뢰/프라이버시 안내</h2>
-          <p class="resultMini">
-            이 사이트는 “재미로 해보는 테스트”처럼 보이지만, 개인 데이터를 남기지 않도록 설계했습니다.
-          </p>
-          <div class="grid" style="margin-top:12px;">
-            <div class="tile">
-              <p class="tileName">개인 응답/점수 저장 안 함</p>
-              <div class="tileMeta">결과는 화면에서만 표시됩니다.</div>
-            </div>
-            <div class="tile">
-              <p class="tileName">익명 집계 데이터</p>
-              <div class="tileMeta">서버에는 월간 집계만 저장합니다.</div>
-            </div>
-            <div class="tile">
-              <p class="tileName">LDP 기반 추정</p>
-              <div class="tileMeta">로컬 프라이버시(LDP) 기반으로 추정/집계합니다.</div>
-            </div>
-            <div class="tile">
-              <p class="tileName">인과 단정 금지</p>
-              <div class="tileMeta">직접적인 인과관계를 단정할 수 없습니다.</div>
-            </div>
-          </div>
-
-          <div class="fine" style="margin-top:12px;">
-            공용 PC/공용 기기에서는 시크릿 모드 사용을 권장합니다. 또한 화면에 표시된 내용은 스크린샷/촬영으로 남을 수 있습니다.
-          </div>
-
-          <div class="btnRow" style="margin-top:12px;">
-            <button class="btn btnPrimary" id="backHome">홈으로</button>
-          </div>
+      <div class="pBar">
+        <div class="pRow">
+          <div class="pLabel">${escapeHtml(label)}</div>
+          <div class="pScore">Score ${score.toFixed(1)}</div>
         </div>
-      </section>
+        <div class="pTrack">
+          <div class="pFill ${cls}" style="width:${pct}%"></div>
+        </div>
+      </div>
     `;
   }
 
-  // ========== Bindings ==========
-  function bindHome(){
-    $('#startSocial')?.addEventListener('click', ()=> startTest('social'));
-    $('#goTrust')?.addEventListener('click', ()=> go('trust'));
-    $('#tileSocial')?.addEventListener('click', ()=> startTest('social'));
-    $('#tileRecovery')?.addEventListener('click', ()=> startTest('recovery'));
-    $('#tileFatigue')?.addEventListener('click', ()=> startTest('fatigue'));
-
-    // keyboard accessibility for tiles
-    for (const id of ['tileSocial','tileRecovery','tileFatigue']){
-      const el = document.getElementById(id);
-      if (!el) continue;
-      el.addEventListener('keydown', (e)=>{ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); } });
-    }
+  function nextTestId(current) {
+    const idx = TESTS.findIndex((t) => t.id === current);
+    if (idx < 0) return null;
+    const next = TESTS[idx + 1];
+    return next ? next.id : null;
   }
 
-  function bindTest(){
-    const choices = document.querySelectorAll('.choice');
-    choices.forEach(btn => {
-      btn.addEventListener('click', ()=>{
-        const v = Number(btn.getAttribute('data-v'));
-        recordAnswer(clamp(v,1,5));
+  // ========== Wiring ==========
+  function wireHome() {
+    $("#navHome")?.addEventListener("click", () => go("home"));
+    $("#navTrust")?.addEventListener("click", () => go("trust"));
+
+    $("#goTrust")?.addEventListener("click", () => go("trust"));
+
+    document.querySelectorAll("[data-start]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-start");
+        go("test", { testId: id });
+      });
+    });
+  }
+
+  function wireTrust() {
+    $("#navHome")?.addEventListener("click", () => go("home"));
+    $("#navTrust")?.addEventListener("click", () => go("trust"));
+    $("#backHome")?.addEventListener("click", () => go("home"));
+  }
+
+  function wireTest(testId) {
+    $("#navHome")?.addEventListener("click", () => go("home"));
+    $("#navTrust")?.addEventListener("click", () => go("trust"));
+    $("#backHome2")?.addEventListener("click", () => go("home"));
+
+    // init answers array
+    const t = TESTS.find((x) => x.id === testId);
+    if (!t) return;
+    if (!state.answers[testId]) state.answers[testId] = Array(t.items.length).fill(0);
+
+    // scale buttons
+    document.querySelectorAll(".scaleBtn").forEach((b) => {
+      b.addEventListener("click", () => {
+        const q = parseInt(b.getAttribute("data-q"), 10);
+        const v = parseInt(b.getAttribute("data-v"), 10);
+        state.answers[testId][q] = v;
+
+        // visual toggle
+        const parent = b.closest(".scale");
+        parent.querySelectorAll(".scaleBtn").forEach((x) => x.removeAttribute("data-on"));
+        b.setAttribute("data-on", "1");
       });
     });
 
-    $('#backBtn')?.addEventListener('click', ()=>{
-      if (state.qIndex > 0){
-        state.qIndex -= 1;
-        render();
-      } else {
-        go('home');
+    $("#submitTest")?.addEventListener("click", () => {
+      const arr = state.answers[testId];
+      if (arr.some((x) => x === 0)) {
+        toast("모든 문항에 답변해 주세요.");
+        return;
       }
-    });
+      const score = scoreForTest(testId, arr);
+      const bin = binForScore(score);
 
-    $('#quitBtn')?.addEventListener('click', ()=>{
-      hardReset();
-    });
-  }
-
-  function bindResult(){
-    $('#moreBtn')?.addEventListener('click', ()=>{
-      const body = $('#moreBody');
-      body?.classList.toggle('show');
-    });
-
-    $('#goHome')?.addEventListener('click', ()=>{ go('home'); });
-
-    const next = nextSuggestion();
-    if (next){
-      $('#goNext')?.addEventListener('click', ()=> startTest(next));
-    } else {
-      $('#toProfile')?.addEventListener('click', ()=> go('profile'));
-    }
-
-    $('#endBtn')?.addEventListener('click', ()=> hardReset());
-
-    $('#saveCardBtn')?.addEventListener('click', ()=>{
-      // Save current result as image (canvas)
-      const t = TESTS.find(x=>x.id === state.currentTestId);
-      const r = (t.id === 'social') ? state.results.social : (t.id === 'recovery') ? state.results.recovery : state.results.fatigue;
-      downloadResultCardImage(r);
-    });
-  }
-
-  function bindProfile(){
-    $('#backHome')?.addEventListener('click', ()=> go('home'));
-    $('#endBtn2')?.addEventListener('click', ()=> hardReset());
-
-    const s = state.results.social.score;
-    const r = state.results.recovery.score;
-    const f = state.results.fatigue.score;
-
-    // Chart.js radar — soft style
-    const ctx = document.getElementById('radar');
-    if (ctx && window.Chart){
-      if (state.profileChart){
-        try{ state.profileChart.destroy(); } catch(e){}
-        state.profileChart = null;
-      }
-
-      const COLORS = {
-        stroke: "rgba(109,94,252,0.92)",
-        fill: "rgba(109,94,252,0.16)",
-        p1: "rgba(109,94,252,0.92)",
-        p2: "rgba(255,111,174,0.90)",
-        p3: "rgba(56,189,248,0.88)",
-        grid: "rgba(255,255,255,0.10)",
-        tick: "rgba(255,255,255,0.70)",
-        label: "rgba(255,255,255,0.75)",
+      // store only in memory
+      state.results[testId] = {
+        testId,
+        score,
+        bin,
+        ts: Date.now(),
       };
 
-      state.profileChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: ['사회적 에너지', '감정 회복 속도', '관계 피로도'],
-          datasets: [{
-            label: 'Energy Profile',
-            data: [s, r, f],
-            borderColor: COLORS.stroke,
-            backgroundColor: COLORS.fill,
-            pointBackgroundColor: [COLORS.p1, COLORS.p2, COLORS.p3],
-            pointBorderColor: "rgba(255,255,255,0.9)",
-            pointBorderWidth: 1.5,
-            pointRadius: 4.5,
-            pointHoverRadius: 5.5,
-            borderWidth: 2.2,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          animation: { duration: 700, easing: 'easeOutQuart' },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: 'rgba(11,16,32,0.92)',
-              titleColor: 'rgba(255,255,255,0.92)',
-              bodyColor: 'rgba(255,255,255,0.9)',
-              displayColors: false,
-              padding: 10,
-              callbacks: { label: (c) => ` ${c.formattedValue} / 5` }
-            }
-          },
-          scales: {
-            r: {
-              min: 1,
-              max: 5,
-              ticks: {
-                stepSize: 1,
-                showLabelBackdrop: false,
-                color: COLORS.tick,
-                font: { size: 12, weight: '700' },
-              },
-              grid: { color: COLORS.grid },
-              angleLines: { color: COLORS.grid },
-              pointLabels: { color: COLORS.label, font: { size: 12, weight: '800' } }
-            }
-          }
-        }
-      });
-    }
+      // Optional: send only aggregated monthly bin counts (LDP) - disabled by default in this static build
+      // sendAggregateCount(testId, bin.short);
 
-    $('#saveProfile')?.addEventListener('click', ()=>{
+      go("result", { testId });
+    });
+  }
+
+  function wireResult(testId) {
+    $("#navHome")?.addEventListener("click", () => go("home"));
+    $("#navTrust")?.addEventListener("click", () => go("trust"));
+    $("#backHome3")?.addEventListener("click", () => go("home"));
+    $("#goTrust2")?.addEventListener("click", () => go("trust"));
+
+    $("#toggleMore")?.addEventListener("click", () => {
+      state.expanded[testId] = !state.expanded[testId];
+      render();
+    });
+
+    $("#saveResultPng")?.addEventListener("click", () => {
+      const r = state.results[testId];
+      if (!r) return;
+      // Save current result as image (canvas)
+      downloadResultCardImage(r);
+    });
+
+    $("#goNext")?.addEventListener("click", () => {
+      const next = nextTestId(testId);
+      if (!next) return;
+      // just scroll down to suggestion card area on mobile
+      document.querySelector(".suggest")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    $("#startNext")?.addEventListener("click", () => {
+      const next = nextTestId(testId);
+      if (next) go("test", { testId: next });
+    });
+
+    $("#goProfile")?.addEventListener("click", () => go("profile"));
+  }
+
+  function wireProfile() {
+    $("#navHome")?.addEventListener("click", () => go("home"));
+    $("#navTrust")?.addEventListener("click", () => go("trust"));
+    $("#backHome4")?.addEventListener("click", () => go("home"));
+    $("#goTrust3")?.addEventListener("click", () => go("trust"));
+    $("#toHomeFromProfile")?.addEventListener("click", () => go("home"));
+
+    // Radar chart (client-side only)
+    renderRadarChart();
+
+    $("#saveProfilePng")?.addEventListener("click", () => {
       downloadProfileImage({
         social: state.results.social,
         recovery: state.results.recovery,
@@ -726,98 +602,193 @@
       });
     });
 
-    $('#saveAll')?.addEventListener('click', ()=>{
+    $("#saveAllPng")?.addEventListener("click", () => {
+      if (!state.results.social || !state.results.recovery || !state.results.fatigue) {
+        toast("3개 결과가 모두 필요해요.");
+        return;
+      }
+      // profile
+      downloadProfileImage({
+        social: state.results.social,
+        recovery: state.results.recovery,
+        fatigue: state.results.fatigue,
+      });
+      // results
       downloadResultCardImage(state.results.social);
-      setTimeout(()=> downloadResultCardImage(state.results.recovery), 250);
-      setTimeout(()=> downloadResultCardImage(state.results.fatigue), 500);
+      setTimeout(() => downloadResultCardImage(state.results.recovery), 250);
+      setTimeout(() => downloadResultCardImage(state.results.fatigue), 500);
     });
   }
 
-  function bindTrust(){
-    $('#backHome')?.addEventListener('click', ()=> go('home'));
+  // ========== Scoring ==========
+  function scoreForTest(testId, answers) {
+    const t = TESTS.find((x) => x.id === testId);
+    if (!t) return 0;
+    const scored = answers.map((v, i) => {
+      const q = t.items[i];
+      if (!q) return v;
+      // reverse: 1<->5, 2<->4, 3 stays 3
+      return q.rev ? 6 - v : v;
+    });
+    // average 1..5
+    return mean(scored);
   }
 
-  // Header nav
-  document.addEventListener('click', (e)=>{
-    if (e.target?.id === 'navHome') go('home');
-    if (e.target?.id === 'navTrust') go('trust');
-  });
+  // ========== Radar (Chart.js) ==========
+  function renderRadarChart() {
+    const el = $("#radar");
+    if (!el || !window.Chart) return;
 
-  // ========== Image export (client-side only) ==========
-  function downloadResultCardImage(result){
-    if (!result) return;
+    const a = state.results.social.score;
+    const b = state.results.recovery.score;
+    const c = state.results.fatigue.score;
 
-    const canvas = document.createElement('canvas');
-    canvas.width = 1080;
-    canvas.height = 1350;
-    const ctx = canvas.getContext('2d');
-
-    // background gradient
-    const g = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    g.addColorStop(0, 'rgba(109,94,252,0.22)');
-    g.addColorStop(0.55, 'rgba(255,111,174,0.18)');
-    g.addColorStop(1, 'rgba(11,16,32,1)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    // soft grain-ish overlay
-    ctx.fillStyle = 'rgba(255,255,255,0.03)';
-    for (let i=0; i<1400; i++){
-      const x = Math.random()*canvas.width;
-      const y = Math.random()*canvas.height;
-      ctx.fillRect(x,y,1,1);
+    // destroy old chart if exists
+    if (el._chart) {
+      el._chart.destroy();
+      el._chart = null;
     }
 
-    // card panel
-    const x=80, y=120, w=canvas.width-160, h=canvas.height-240, rad=44;
-    drawRoundRect(ctx, x,y,w,h,rad);
-    ctx.fillStyle = 'rgba(255,255,255,0.10)';
+    const data = {
+      labels: ["사회적 에너지", "감정 회복", "관계 피로도"],
+      datasets: [
+        {
+          label: "Energy Profile",
+          data: [a, b, c],
+          fill: true,
+          borderWidth: 2,
+          pointRadius: 4,
+        },
+      ],
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+      },
+      scales: {
+        r: {
+          min: 1,
+          max: 5,
+          ticks: { stepSize: 1, display: true },
+          grid: { circular: true },
+        },
+      },
+    };
+
+    el._chart = new window.Chart(el, { type: "radar", data, options });
+  }
+
+  // ========== Image download (canvas-only; no HTML capture; no storage) ==========
+  function downloadResultCardImage(result) {
+    const t = TESTS.find((x) => x.id === result.testId);
+    if (!t) return;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 1350;
+    const ctx = canvas.getContext("2d");
+
+    // background
+    const g = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    g.addColorStop(0, "rgba(109,94,252,0.22)");
+    g.addColorStop(0.55, "rgba(255,111,174,0.16)");
+    g.addColorStop(1, "rgba(11,16,32,1)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // sparkles
+    for (let i = 0; i < 90; i++) {
+      const x0 = Math.random() * canvas.width;
+      const y0 = Math.random() * canvas.height;
+      const r0 = 1 + Math.random() * 2.8;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${0.06 + Math.random() * 0.16})`;
+      ctx.arc(x0, y0, r0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // card
+    const x = 80,
+      y = 120,
+      w = canvas.width - 160,
+      h = canvas.height - 240,
+      rad = 44;
+    drawRoundRect(ctx, x, y, w, h, rad);
+    ctx.fillStyle = "rgba(255,255,255,0.10)";
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.16)';
+    ctx.strokeStyle = "rgba(255,255,255,0.16)";
     ctx.lineWidth = 3;
     ctx.stroke();
 
-    // title
-    ctx.fillStyle = 'rgba(255,255,255,0.92)';
-    ctx.font = '900 76px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    ctx.fillText(`${result.binEmoji} ${result.binLabel}`, x+70, y+190);
+    // header
+    ctx.fillStyle = "rgba(255,255,255,0.92)";
+    ctx.font = "900 72px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR";
+    ctx.fillText(`${t.title} 결과`, x + 70, y + 170);
+
+    ctx.fillStyle = "rgba(255,255,255,0.72)";
+    ctx.font = "800 34px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR";
+    ctx.fillText(`${result.bin.emoji} ${result.bin.label}`, x + 70, y + 230);
+
+    // big label
+    ctx.fillStyle = "rgba(255,255,255,0.95)";
+    ctx.font = "900 140px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR";
+    ctx.fillText(result.bin.short, x + 70, y + 420);
+
+    // short lines
+    ctx.fillStyle = "rgba(255,255,255,0.82)";
+    ctx.font = "800 42px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR";
+    ctx.fillText(t.result.short2[0], x + 70, y + 520);
+    ctx.fillText(t.result.short2[1], x + 70, y + 585);
 
     // score
-    ctx.fillStyle = 'rgba(255,255,255,0.78)';
-    ctx.font = '800 44px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    ctx.fillText(`Score ${result.score.toFixed(1)}`, x+70, y+270);
+    ctx.fillStyle = "rgba(255,255,255,0.70)";
+    ctx.font = "900 42px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR";
+    ctx.fillText(`Score ${result.score.toFixed(1)}`, x + 70, y + 680);
 
-    // compare highlight
-    ctx.fillStyle = 'rgba(109,94,252,0.95)';
-    ctx.font = '900 46px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    wrapText(ctx, result.compareLine, x+70, y+350, w-140, 56);
-
-    // short line
-    ctx.fillStyle = 'rgba(255,255,255,0.78)';
-    ctx.font = '750 44px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    wrapText(ctx, result.short, x+70, y+480, w-140, 56);
+    // divider
+    ctx.strokeStyle = "rgba(255,255,255,0.16)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x + 70, y + 740);
+    ctx.lineTo(x + w - 70, y + 740);
+    ctx.stroke();
 
     // footer
-    ctx.fillStyle = 'rgba(255,255,255,0.62)';
-    ctx.font = '750 32px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    wrapText(ctx, '익명 집계 데이터 기반 비교 · 직접적인 인과관계를 단정할 수 없다', x+70, y+h-110, w-140, 44);
+    ctx.fillStyle = "rgba(255,255,255,0.62)";
+    ctx.font = "750 32px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR";
+    wrapText(
+      ctx,
+      "익명 집계 데이터 기반 비교 · 직접적인 인과관계를 단정할 수 없다",
+      x + 70,
+      y + h - 110,
+      w - 140,
+      44
+    );
 
-    ctx.fillStyle = 'rgba(255,255,255,0.62)';
-    ctx.font = '900 34px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    ctx.fillText('Mind Spark', x+w-290, y+h-110);
+    ctx.fillStyle = "rgba(255,255,255,0.62)";
+    ctx.font = "900 34px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR";
+    ctx.fillText("Mind Spark", x + w - 290, y + h - 110);
 
-    canvas.toBlob((blob)=>{
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `mind-spark-${result.testId}-result.png`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-      toast('이미지를 저장했어요.');
-    }, 'image/png', 1.0);
+    canvas.toBlob(
+      (blob) => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `mind-spark-${result.testId}-result.png`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+        toast("이미지를 저장했어요.");
+      },
+      "image/png",
+      1.0
+    );
   }
 
   function downloadProfileImage(payload){
     // Draw a shareable profile card (radar-like triangle + bars) in canvas
+    // NOTE: Layout is computed so that the footer area never overlaps the bar area.
     const s = payload.social.score;
     const r = payload.recovery.score;
     const f = payload.fatigue.score;
@@ -827,29 +798,40 @@
     canvas.height = 1350;
     const ctx = canvas.getContext('2d');
 
-    // background
+    // background (brighter, soft pastel)
     const g = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    g.addColorStop(0, 'rgba(109,94,252,0.22)');
-    g.addColorStop(0.55, 'rgba(255,111,174,0.16)');
-    g.addColorStop(1, 'rgba(11,16,32,1)');
+    g.addColorStop(0, 'rgba(109,94,252,0.18)');
+    g.addColorStop(0.55, 'rgba(255,111,174,0.14)');
+    g.addColorStop(1, 'rgba(255,255,255,0.94)');
     ctx.fillStyle = g;
     ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    // subtle sparkle dots (kept light to avoid "gloomy" feel)
+    for (let i=0; i<80; i++){
+      ctx.beginPath();
+      const x0 = Math.random()*canvas.width;
+      const y0 = Math.random()*canvas.height;
+      const r0 = 1 + Math.random()*2.2;
+      ctx.fillStyle = `rgba(255,255,255,${0.06 + Math.random()*0.12})`;
+      ctx.arc(x0, y0, r0, 0, Math.PI*2);
+      ctx.fill();
+    }
 
     // card
     const x=80, y=120, w=canvas.width-160, h=canvas.height-240, rad=44;
     drawRoundRect(ctx, x,y,w,h,rad);
-    ctx.fillStyle = 'rgba(255,255,255,0.10)';
+    ctx.fillStyle = 'rgba(255,255,255,0.14)';
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.16)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.20)';
     ctx.lineWidth = 3;
     ctx.stroke();
 
     // header
-    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    ctx.fillStyle = 'rgba(20,24,40,0.92)';
     ctx.font = '900 72px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
     ctx.fillText('✨ 에너지 프로파일', x+70, y+170);
 
-    ctx.fillStyle = 'rgba(255,255,255,0.70)';
+    ctx.fillStyle = 'rgba(20,24,40,0.68)';
     ctx.font = '800 34px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
     ctx.fillText('3가지 흐름을 한눈에', x+70, y+230);
 
@@ -859,7 +841,7 @@
     const R = 220;
 
     // axes
-    ctx.strokeStyle = 'rgba(255,255,255,0.14)';
+    ctx.strokeStyle = 'rgba(20,24,40,0.12)';
     ctx.lineWidth = 3;
     const angles = [-Math.PI/2, (2*Math.PI/3)-Math.PI/2, (4*Math.PI/3)-Math.PI/2];
     angles.forEach(a=>{
@@ -879,7 +861,7 @@
         if (i===0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
       });
       ctx.closePath();
-      ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+      ctx.strokeStyle = 'rgba(20,24,40,0.10)';
       ctx.lineWidth = 2;
       ctx.stroke();
     }
@@ -895,44 +877,64 @@
     ctx.beginPath();
     pts.forEach((p,i)=>{ if(i===0) ctx.moveTo(p.x,p.y); else ctx.lineTo(p.x,p.y); });
     ctx.closePath();
-    ctx.fillStyle = 'rgba(109,94,252,0.20)';
+    ctx.fillStyle = 'rgba(109,94,252,0.16)';
     ctx.fill();
     ctx.strokeStyle = 'rgba(109,94,252,0.92)';
     ctx.lineWidth = 4;
     ctx.stroke();
 
     // points
-    const pointColors = ['rgba(109,94,252,0.95)','rgba(255,111,174,0.92)','rgba(56,189,248,0.90)'];
+    const pointColors = ['rgba(109,94,252,0.95)','rgba(255,111,174,0.92)','rgba(56,189,248,0.92)'];
     pts.forEach((p,i)=>{
       ctx.beginPath();
       ctx.arc(p.x,p.y,10,0,Math.PI*2);
       ctx.fillStyle = pointColors[i];
       ctx.fill();
-      ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+      ctx.strokeStyle = 'rgba(255,255,255,0.92)';
       ctx.lineWidth = 3;
       ctx.stroke();
     });
 
     // axis labels
-    ctx.fillStyle = 'rgba(255,255,255,0.78)';
+    ctx.fillStyle = 'rgba(20,24,40,0.76)';
     ctx.font = '900 34px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
     ctx.fillText('사회적 에너지', cx-420, cy-250);
     ctx.fillText('감정 회복', cx+140, cy+10);
     ctx.fillText('관계 피로도', cx-430, cy+60);
 
+    // ----- Layout-safe footer area (prevents overlap) -----
+    const footerAreaH = 190; // reserved bottom space inside the card
+    const dividerY = y + h - footerAreaH;
+
+    // divider line to visually separate footer
+    ctx.strokeStyle = 'rgba(20,24,40,0.10)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x+60, dividerY);
+    ctx.lineTo(x+w-60, dividerY);
+    ctx.stroke();
+
     // bars
     const barX = x+70;
-    let barY = y+820;
     const barW = w-140;
     const barH = 20;
 
+    // compute a safe start Y so bars always end above dividerY
+    const barsCount = 3;
+    const barStep = 96;
+    const barsHeight = barStep * barsCount;
+    let barY = dividerY - barsHeight - 26;      // preferred (adaptive)
+    const minBarY = y + 760;                    // keeps spacing under radar
+    if (barY < minBarY) barY = minBarY;
+    if (barY + barsHeight > dividerY - 8) barY = dividerY - barsHeight - 8;
+
     const bar = (label, val, color) => {
-      ctx.fillStyle = 'rgba(255,255,255,0.70)';
+      ctx.fillStyle = 'rgba(20,24,40,0.78)';
       ctx.font = '900 34px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
       ctx.fillText(label, barX, barY);
 
       // bg
-      ctx.fillStyle = 'rgba(255,255,255,0.10)';
+      ctx.fillStyle = 'rgba(20,24,40,0.08)';
       drawRoundRect(ctx, barX, barY+18, barW, barH, 999);
       ctx.fill();
 
@@ -941,25 +943,26 @@
       drawRoundRect(ctx, barX, barY+18, barW*(clamp(val,1,5)/5), barH, 999);
       ctx.fill();
 
-      ctx.fillStyle = 'rgba(255,255,255,0.72)';
+      ctx.fillStyle = 'rgba(20,24,40,0.62)';
       ctx.font = '900 32px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
       ctx.fillText(`Score ${val.toFixed(1)}`, barX+barW-190, barY);
 
-      barY += 96;
+      barY += barStep;
     };
 
     bar('사회적 에너지', s, 'rgba(109,94,252,0.92)');
     bar('감정 회복 속도', r, 'rgba(255,111,174,0.88)');
     bar('인간관계 피로도', f, 'rgba(56,189,248,0.86)');
 
-    // footer
-    ctx.fillStyle = 'rgba(255,255,255,0.62)';
+    // footer (inside reserved area)
+    const footerTextY = dividerY + 72;
+    ctx.fillStyle = 'rgba(20,24,40,0.56)';
     ctx.font = '800 30px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    wrapText(ctx, '익명 집계 데이터 기반 비교 · 직접적인 인과관계를 단정할 수 없다', x+70, y+h-110, w-140, 42);
+    wrapText(ctx, '익명 집계 데이터 기반 비교 · 직접적인 인과관계를 단정할 수 없다', x+70, footerTextY, w-140, 42);
 
-    ctx.fillStyle = 'rgba(255,255,255,0.62)';
+    ctx.fillStyle = 'rgba(20,24,40,0.56)';
     ctx.font = '900 34px system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR';
-    ctx.fillText('Mind Spark', x+w-290, y+h-110);
+    ctx.fillText('Mind Spark', x+w-290, footerTextY+42);
 
     canvas.toBlob((blob)=>{
       const a = document.createElement('a');
@@ -971,27 +974,27 @@
     }, 'image/png', 1.0);
   }
 
-  function drawRoundRect(ctx, x,y,w,h,r){
-    const rr = Math.min(r, w/2, h/2);
+  function drawRoundRect(ctx, x, y, w, h, r) {
+    const rr = Math.min(r, w / 2, h / 2);
     ctx.beginPath();
-    ctx.moveTo(x+rr, y);
-    ctx.arcTo(x+w, y, x+w, y+h, rr);
-    ctx.arcTo(x+w, y+h, x, y+h, rr);
-    ctx.arcTo(x, y+h, x, y, rr);
-    ctx.arcTo(x, y, x+w, y, rr);
+    ctx.moveTo(x + rr, y);
+    ctx.arcTo(x + w, y, x + w, y + h, rr);
+    ctx.arcTo(x + w, y + h, x, y + h, rr);
+    ctx.arcTo(x, y + h, x, y, rr);
+    ctx.arcTo(x, y, x + w, y, rr);
     ctx.closePath();
   }
 
-  function wrapText(ctx, text, x, y, maxWidth, lineHeight){
-    const words = String(text).split(' ');
-    let line = '';
+  function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    const words = String(text).split(" ");
+    let line = "";
     let yy = y;
-    for (let n=0; n<words.length; n++){
-      const testLine = line + words[n] + ' ';
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + " ";
       const metrics = ctx.measureText(testLine);
-      if (metrics.width > maxWidth && n > 0){
+      if (metrics.width > maxWidth && n > 0) {
         ctx.fillText(line, x, yy);
-        line = words[n] + ' ';
+        line = words[n] + " ";
         yy += lineHeight;
       } else {
         line = testLine;
@@ -1000,22 +1003,22 @@
     ctx.fillText(line, x, yy);
   }
 
-  function escapeHtml(s){
+  function escapeHtml(s) {
     return String(s)
-      .replaceAll('&','&amp;')
-      .replaceAll('<','&lt;')
-      .replaceAll('>','&gt;')
-      .replaceAll('"','&quot;')
-      .replaceAll("'",'&#039;');
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
   }
 
   // ========== Init ==========
-  function init(){
+  function init() {
     // Avoid accidental caching on the client side isn't fully possible from static file.
     // For deployment, set HTTP headers: Cache-Control: no-store for /tests, /result, /profile.
 
     // Default route
-    go('home');
+    go("home");
 
     // If user closes/refreshes, memory state disappears (good for privacy)
   }
